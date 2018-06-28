@@ -5,7 +5,7 @@
       <div>
         <h4>NodeJs</h4>
         <p>
-          Word for word Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
+          Word for word Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.<br><br>The app can be started from the command line by running the command `node index.js`. Currently this starts our app and runs it on your localhost. I highly recommend installing the nodemon package using npm. Nodemon allows us to keep the project running and restarts it whenever specific files are saved. This prevents us from having to continually restart the app every time we make a change.
         </p>
       </div>
     </li>
