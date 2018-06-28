@@ -9,6 +9,7 @@ require( 'dotenv' ).config();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Connect and start up our firebase connection.
 const config = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: "peer-review-gt18.firebaseapp.com",
@@ -19,12 +20,10 @@ const config = {
   };
   firebase.initializeApp(config);
 
-app.use( '/public', express.static( 'public/' ) );
-app.use( express.static( 'public/'            ) );
-
+// These allow us to shortcut links and src references within our code.
+app.use( '/public', express.static( 'public/'  ) );
+app.use( express.static( 'public/'             ) );
 app.use( '/css', express.static( 'public/css/' ) );
-
-app.get( '/', ( req, res ) => res.send( 'hello' ) );
 
 app.post( '/create_new_account', function( req, res ) {
     let email = req.body.email;
