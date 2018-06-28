@@ -25,4 +25,20 @@
         </p>
       </div>
     </li>
+    <li>
+      <div>
+        <h4>Firebase</h4>
+        <p>
+          We are using Firebase within our webapp. Our main use of it at the moment is in `/index.js`. This is the prime location for using it as this is where we are currently storing our middleware functions/api requests.
+        </p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <h4>dotenv</h4>
+        <p>
+          This is a module that we have requested in through npm. With this you can store environmental variables in a `.env` file and then access them elsewhere within our app. This is especially useful as it allows us to hide variables we would not like others to see such as our API keys.
+        </p>
+      </div>
+    </li>
   </ul>
