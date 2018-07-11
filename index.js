@@ -22,8 +22,7 @@ const config = {
 
 // These allow us to shortcut links and src references within our code.
 app.use( '/public', express.static( 'public/'  ) );
-app.use( express.static( 'public/'             ) );
-app.use( '/css', express.static( 'public/css/' ) );
+app.use( express.static( 'public/', { extensions: ['html'] } ) );
 
 app.post( '/create_new_account', function( req, res ) {
     let email = req.body.email;
