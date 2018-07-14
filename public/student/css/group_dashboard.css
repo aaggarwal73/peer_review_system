@@ -1,0 +1,17 @@
+#header {
+    /* background-color : #AAA; */
+}
+
+/* .box { */
+/*     background-color : #AAA; */
+/*     height : 50px; */
+/* } */
+
+.jumbotron {
+    padding : 2rem 2rem;
+}
+
+.row {
+    /* margin : 0px 10px; */
+    padding : 10px 15px;
+}

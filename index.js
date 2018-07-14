@@ -20,6 +20,8 @@ const config = {
   };
   firebase.initializeApp(config);
 
+const database = firebase.database();
+
 // These allow us to shortcut links and src references within our code.
 app.use( '/public', express.static( 'public/'  ) );
 app.use( express.static( 'public/', { extensions: ['html'] } ) );
@@ -32,6 +34,11 @@ app.post( '/create_new_account', function( req, res ) {
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then( function( success ) {
+            safe_email = email.replace( '.', '_' );
+            firebase.database().ref('users').child(safe_email).set({
+                email: email,
+            });
+
             res.status(200).send( 'Congrats new user' );
         }, function( error ) {
             console.log( error );
