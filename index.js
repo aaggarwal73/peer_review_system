@@ -1,6 +1,7 @@
 const express    = require( 'express'  );
 const firebase   = require( 'firebase' );
 const bodyParser = require( 'body-parser' );
+const path       = require( 'path' );
 const app        = express();
 
 require( 'dotenv' ).config();
@@ -44,6 +45,11 @@ app.post( '/create_new_account', function( req, res ) {
             console.log( error );
             res.status(500).send( error.message );
         });
+});
+
+// Please keep this peice of middleware at the bottom of this page. It reroutes 404s.
+app.get('*', function(req, res){
+    res.sendFile(path.join(__dirname + '/public/404.html'));
 });
 
 app.listen( 3000, () => console.log( 'Example app listening on port 3000!' ) );
