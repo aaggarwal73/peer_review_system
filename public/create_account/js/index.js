@@ -6,12 +6,13 @@ function create_new_account() {
     };
 
     $.post( '/create_new_account', new_account_credentials )
-        .done( create_new_account_request )
+        .done( create_new_account_success )
         .fail( function( data, return_status ) {
             console.log( return_status );
         });
 }
 
-function create_new_account_request( data ) {
-    console.log( "Congrats!" );
+function create_new_account_success( data ) {
+    window.sessionStorage.setItem( "user", data.email );
+    location.href = "/student/group_dashboard"
 }

@@ -4,13 +4,14 @@ function login_user() {
         password : $( '#input_password' ).val()
     };
 
-    // $.get( '/create_new_account', account_credentials );
-    //     .done( login_user_success )
-    //     .fail( function( data, return_status ) {
-    //         console.log( return_status );
-    //     });
+    $.get( '/login_user', account_credentials )
+        .done( login_user_success )
+        .fail( function( data, return_status ) {
+            console.log( return_status );
+        });
 }
 
-function login_user_resquest( data, return_status ) {
-
+function login_user_success( data ) {
+    window.sessionStorage.setItem( "user", data.email );
+    location.href = "/student/group_dashboard"
 }

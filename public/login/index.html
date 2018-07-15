@@ -2,6 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content ="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="js/index.js"></script>
     <script src="../bundle.js"></script>
     <link href="css/index.css" rel="stylesheet">
 </head>
@@ -13,7 +14,7 @@
         <label for="input_password" class="sr-only">Password</label>
         <input type="password" id="input_password" class="form-control" placeholder="Password" required>
 
-        <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-primary btn-block" type="button" onclick="login_user()">Sign in</button>
         <a id="btn_create_account" class="btn btn-secondary btn-block" href="/create_account" role="button">Create an account</a>
     </form>
 
