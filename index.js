@@ -34,15 +34,18 @@ app.post( '/create_new_account', function( req, res ) {
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then( function( success ) {
+
+            // Create new student instance
             safe_email = email.replace( '.', '_' );
-            firebase.database().ref('users').child(safe_email).set({
+            username = get_username_from_email( email );
+            id = make_id();
+            firebase.database().ref('students').child( username ).set({
                 email : email,
-                student : true
+                id    : id,
             });
 
-            res.status(200).send( { email : email } );
+            res.status(200).send( { email : email, id : id } );
         }, function( error ) {
-            console.log( error );
             res.status(500).send( error.message );
         });
 });
@@ -54,9 +57,30 @@ app.get( '/login_user', function( req, res ) {
 
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then( function( success ) {
-        res.status(200).send( { email : email } );
+        username = get_username_from_email( email );
+
+        var user = {};
+        firebase.database().ref('/students/' + username).once('value')
+            .then( function(snapshot) {
+                user["email"] = snapshot.val().email;
+                user["id"]    = snapshot.val().id;
+
+                res.status(200).send( { email : user.email, id : user.id } );
+            });
     }, function( error ) {
         res.status(500).send( error.message );
+    });
+});
+
+app.get( '/authenticate_student', function( req, res ) {
+    let email    = req.query.email;
+    username = get_username_from_email( email );
+
+    firebase.database().ref('/students/' + username).once('value')
+        .then( function(snapshot) {
+            res.status(200).send( { id : snapshot.val().id } );
+        }, function( error ) {
+            res.status(500).send( error.message );
     });
 });
 
@@ -66,3 +90,22 @@ app.get('*', function(req, res){
 });
 
 app.listen( 3000, () => console.log( 'Example app listening on port 3000!' ) );
+
+// Make unique id with 15 characters.
+function make_id() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 15; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
+
+// Get the part of the email located before the "@" symbol.
+function get_username_from_email( email ) {
+    let at_location = email.indexOf( "@" );
+    let username = email.substring( 0, at_location );
+
+    return username;
+}

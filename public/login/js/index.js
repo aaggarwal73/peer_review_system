@@ -13,5 +13,6 @@ function login_user() {
 
 function login_user_success( data ) {
     window.sessionStorage.setItem( "user", data.email );
+    window.sessionStorage.setItem( "id", data.id      );
     location.href = "/student/group_dashboard"
 }

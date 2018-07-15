@@ -14,5 +14,6 @@ function create_new_account() {
 
 function create_new_account_success( data ) {
     window.sessionStorage.setItem( "user", data.email );
+    window.sessionStorage.setItem( "id", data.id );
     location.href = "/student/group_dashboard"
 }
