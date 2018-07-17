@@ -6,16 +6,146 @@
     <script src="../bundle.js"></script>
     <link href="css/index.css" rel="stylesheet">
 </head>
+
+
+
+<div id="form">
+    <div class="container">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div id="userform">
+                <ul class="nav nav-tabs nav-justified" role="tablist">
+                    <li class="active"><a href="#signup"  role="tab" data-toggle="tab">Sign up</a></li>
+                    <li><a href="#login"  role="tab" data-toggle="tab">Log in</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade active in" id="teachers">
+                        <h2 class="text-uppercase text-center"> Teacher Login</h2>
+                        <form id="teachers">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6">
+                                    
+                            <div class="mrgn-30-top">
+                            
+                                <button type="submit" class="btn btn-larger btn-block"/>
+                                Teachers
+                                </button>
+                            </div>
+                         </form>
+                </div>
+                <div class="tab-pane fade in" id="login">
+                <h2 class="text-uppercase text-center"> Students</h2>
+                <form id="students">
+                    <div class="form-group">
+                    <label> Your Email<span class="req">*</span> </label>
+                    <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address." autocomplete="off">
+                    <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                    <label> Password<span class="req">*</span> </label>
+                    <input type="password" class="form-control" id="password" required data-validation-required-message="Please enter your password" autocomplete="off">
+                    <p class="help-block text-danger"></p>
+                    </div>
+                    <div class="mrgn-30-top">
+                    <button type="submit" class="btn btn-larger btn-block"/>
+                    Log in
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- /.container -->
+</div>
+
+
+
+
+
+
+
 <body class="text-center">
-    <form class="form-signin">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="input_email" class="sr-only">Email address</label>
-        <input type="email" id="input_email" class="form-control" placeholder="Email Address" required autofocus>
-        <label for="input_password" class="sr-only">Password</label>
-        <input type="password" id="input_password" class="form-control" placeholder="Password" required>
-
-        <button class="btn btn-primary btn-block" type="button" onclick="login_user()">Sign in</button>
-        <a id="btn_create_account" class="btn btn-secondary btn-block" href="/create_account" role="button">Create an account</a>
-    </form>
-
+    <div id="form">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-login">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="#" class="active" id="students-form-link">Student</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#" id="teachers-form-link">Teacher</a>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form id="students-form" action="https://phpoll.com/students-login/process" method="post" role="form" style="display: block;">
+                                    <div class="form-group">
+                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                                        <label for="remember"> Remember Me</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="text-center">
+                                                    <a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form id="teachers-form" action="https://phpoll.com/teachers-login/process" method="post" role="form" style="display: block;">
+                                    <div class="form-group">
+                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                                        <label for="remember"> Remember Me</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="text-center">
+                                                    <a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>

@@ -43,7 +43,7 @@ app.post( '/create_new_account', function( req, res ) {
                 email : email,
                 id    : id,
             });
-
+         
             res.status(200).send( { email : email, id : id } );
         }, function( error ) {
             res.status(500).send( error.message );
@@ -84,6 +84,18 @@ app.get( '/authenticate_student', function( req, res ) {
     });
 });
 
+app.get( '/authenticate_teachers', function( req, res ) {
+    let email    = req.query.email;
+    username = get_username_from_email( email );
+
+    firebase.database().ref('/teachers/' + username).once('value')
+        .then( function(snapshot) {
+            res.status(200).send( { id : snapshot.val().id } );
+        }, function( error ) {
+            res.status(500).send( error.message );
+    });
+});
+
 // Please keep this peice of middleware at the bottom of this page. It reroutes 404s.
 app.get('*', function(req, res){
     res.sendFile(path.join(__dirname + '/public/404.html'));
@@ -109,3 +121,5 @@ function get_username_from_email( email ) {
 
     return username;
 }
+
+
